@@ -27,7 +27,7 @@ export function ImageSlider({ imagesUrl }: Props) {
       <CarImageWrapper>
           <CarImage
             source={{
-              uri: "https://img1.gratispng.com/20180509/ocq/kisspng-chevrolet-celta-chevrolet-prisma-chevrolet-corsa-g-5af2c0514a0508.3939154215258583853032.jpg",
+              uri: imagesUrl[0],
             }}
             resizeMode="contain"
           />
