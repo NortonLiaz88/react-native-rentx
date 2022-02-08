@@ -21,7 +21,12 @@ import { SchedulingDetails } from "./src/screens/SchedulingDetails";
 import { SchedulingComplete } from "./src/screens/SchedulingComplete";
 
 import { NavigationContainer } from '@react-navigation/native';
+import * as SplashScreen from 'expo-splash-screen';
 import { Routes } from "./src/routes";
+
+SplashScreen.preventAutoHideAsync()
+  .then(result => console.log(`SplashScreen.preventAutoHideAsync() succeeded: ${result}`))
+  .catch(console.warn); // it's good to explicitly catch and inspect any error
 
 export default function App() {
   const [fontsLoaded] = useFonts({
