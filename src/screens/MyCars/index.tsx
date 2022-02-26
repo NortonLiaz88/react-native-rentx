@@ -27,6 +27,7 @@ import {
 } from "./styles";
 import AppLoading from "expo-app-loading";
 import { Load } from "../../components/Load";
+import { LoadAnimation } from "../../components/LoadAnimation";
 
 interface CarProps {
   id: string;
@@ -74,7 +75,7 @@ export function MyCars() {
         <Subtitle>Conforto, segurança e praticidade.</Subtitle>
       </Header>
       {loading ? (
-        <Load />
+        <LoadAnimation />
       ) : (
         <Content>
           <Appointments>

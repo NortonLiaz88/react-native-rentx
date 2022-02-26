@@ -21,7 +21,11 @@ export function StackRoutes() {
       initialRouteName="Splash"
     >
       <Screen name="Splash" component={Splash}></Screen>
-      <Screen name="Home" component={Home} />
+      <Screen
+        name="Home"
+        component={Home}
+        options={{ gestureEnabled: false }}
+      />
       <Screen name="CarDetails" component={CarDetails} />
       <Screen name="Scheduling" component={Scheduling} />
       <Screen name="SchedulingDetails" component={SchedulingDetails} />
