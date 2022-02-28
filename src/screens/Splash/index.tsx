@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect } from "react";
-import Animated,{
+import Animated, {
   Extrapolate,
   interpolate,
   runOnJS,
@@ -17,7 +17,7 @@ import { Container } from "./styles";
 export function Splash() {
   const splashAnimation = useSharedValue(0);
   const navigation = useNavigation<any>();
-  
+
   const brandStyle = useAnimatedStyle(() => {
     return {
       opacity: interpolate(splashAnimation.value, [0, 50], [1, 0]),
@@ -28,10 +28,10 @@ export function Splash() {
             [0, 50],
             [0, -50],
             Extrapolate.CLAMP
-          )
-        }
-      ]
-    }
+          ),
+        },
+      ],
+    };
   });
 
   const logoStyle = useAnimatedStyle(() => {
@@ -44,10 +44,10 @@ export function Splash() {
             [0, 50],
             [-50, 0],
             Extrapolate.CLAMP
-          )
-        }
-      ]
-    }
+          ),
+        },
+      ],
+    };
   });
 
   function startApp() {
@@ -61,27 +61,23 @@ export function Splash() {
 
     // console.log(screenToGo);
 
-    navigation.navigate('Home');
+    navigation.navigate("SignIn");
   }
 
   useEffect(() => {
-    splashAnimation.value = withTiming(
-      50, 
-      { duration: 1000 },
-      () => {
-        'worklet'
-        runOnJS(startApp)();
-      }
-    )
-  }, [])
+    splashAnimation.value = withTiming(50, { duration: 1000 }, () => {
+      "worklet";
+      runOnJS(startApp)();
+    });
+  }, []);
 
   return (
     <Container>
-      <Animated.View style={[{position: "absolute"}, brandStyle]}>
+      <Animated.View style={[{ position: "absolute" }, brandStyle]}>
         <BrandSvg width={80} height={50} />
       </Animated.View>
 
-      <Animated.View style={[{position: "absolute"}, logoStyle]}>
+      <Animated.View style={[{ position: "absolute" }, logoStyle]}>
         <LogoSvg width={180} height={20} />
       </Animated.View>
     </Container>

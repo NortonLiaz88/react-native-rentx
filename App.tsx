@@ -20,12 +20,15 @@ import { Scheduling } from "./src/screens/Scheduling";
 import { SchedulingDetails } from "./src/screens/SchedulingDetails";
 import { SchedulingComplete } from "./src/screens/SchedulingComplete";
 
-import { NavigationContainer } from '@react-navigation/native';
-import * as SplashScreen from 'expo-splash-screen';
+import { NavigationContainer } from "@react-navigation/native";
+import * as SplashScreen from "expo-splash-screen";
 import { Routes } from "./src/routes";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync()
-  .then(result => console.log(`SplashScreen.preventAutoHideAsync() succeeded: ${result}`))
+  .then((result) =>
+    console.log(`SplashScreen.preventAutoHideAsync() succeeded: ${result}`)
+  )
   .catch(console.warn); // it's good to explicitly catch and inspect any error
 
 export default function App() {
@@ -37,13 +40,15 @@ export default function App() {
     Archivo_600SemiBold,
   });
 
-  if(!fontsLoaded) {
-    return <AppLoading/>
+  if (!fontsLoaded) {
+    return <AppLoading />;
   }
-  
+
   return (
-    <ThemeProvider theme={theme}>
-      <Routes />
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
