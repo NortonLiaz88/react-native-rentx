@@ -7,6 +7,7 @@ import { Bullet } from "../../../components/Bullet";
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
 import { PasswordInput } from "../../../components/PasswordInput";
+import api from "../../../services/api";
 
 import {
   Container,
@@ -39,7 +40,7 @@ export function SecondStep() {
 
   const { user } = route.params as Params;
 
-  function handleRegister() {
+  async function handleRegister() {
     if (!password || !confirmPassword) {
       return Alert.alert("Informe a senha e a confirmação");
     }
@@ -48,11 +49,22 @@ export function SecondStep() {
       return Alert.alert("As senhas não são iguais");
     }
 
-    navigation.navigate("Complete", {
-      title: `Conta\nCriada!`,
-      message: `Agora é só fazer login\ne aproveitar`,
-      nextScreenRoute: "SignIn",
-    });
+    try {
+      await api.post("/users", {
+        name: user.name,
+        email: user.email,
+        driver_license: user.driverLicense,
+        password,
+      });
+
+      navigation.navigate("Complete", {
+        title: `Conta\nCriada!`,
+        message: `Agora é só fazer login\ne aproveitar`,
+        nextScreenRoute: "SignIn",
+      });
+    } catch {
+      Alert.alert("Opa não foi possivel cadastrar.");
+    }
   }
 
   return (

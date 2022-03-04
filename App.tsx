@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AppLoading from "expo-app-loading";
 import { ThemeProvider } from "styled-components";
+import { AppProvider } from "./src/hooks";
 
 import {
   useFonts,
@@ -47,7 +48,9 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider theme={theme}>
-        <Routes />
+        <AppProvider>
+          <Routes />
+        </AppProvider>
       </ThemeProvider>
     </GestureHandlerRootView>
   );
