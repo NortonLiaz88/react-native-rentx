@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 import * as Yup from "yup";
 import {
   KeyboardAvoidingView,
@@ -15,7 +16,6 @@ import { Input } from "../../components/Input";
 import { PasswordInput } from "../../components/PasswordInput";
 
 import { Container, Footer, Header, Form, SubTitle, Title } from "./styles";
-import { useNavigation } from "@react-navigation/native";
 
 export function SignIn() {
   const [email, setEmail] = useState("");
@@ -48,7 +48,9 @@ export function SignIn() {
     console.log("Navigation");
     navigation.navigate("SignUpFirstStep");
   }
+
   const theme = useTheme();
+
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}

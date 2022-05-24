@@ -2,8 +2,6 @@ import React from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { Home } from "../screens/Home";
-
 import { MyCars } from "../screens/MyCars";
 
 import HomeSvg from "../assets/home.svg";
@@ -14,6 +12,7 @@ import { StackRoutes } from "./app.stack.routes";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import { useTheme } from "styled-components";
 import { Platform } from "react-native";
+import { Profile } from "../screens/Profile";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -21,16 +20,16 @@ export function TabRoutes() {
   const theme = useTheme();
   return (
     <Navigator
-    screenOptions={{
-      headerShown: false,
-      tabBarActiveTintColor: theme.colors.main,
-      tabBarInactiveTintColor: theme.colors.text,
-      tabBarShowLabel: false,
-      tabBarStyle: {
-        height: 88,
-        paddingVertical: Platform.OS === "ios" ? 20 : 0,
-      },
-    }}
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: theme.colors.main,
+        tabBarInactiveTintColor: theme.colors.text,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          height: 88,
+          paddingVertical: Platform.OS === "ios" ? 20 : 0,
+        },
+      }}
       // screenOptions={{
       //   tabBarActiveTintColor: theme.colors.main,
       //   tabBarInactiveTintColor: theme.colors.text_detail,
@@ -65,9 +64,9 @@ export function TabRoutes() {
 
       <Screen
         name="Profile"
-        component={Home}
+        component={Profile}
         options={{
-          tabBarIcon: ({  color }) => (
+          tabBarIcon: ({ color }) => (
             <PeopleSvg width={24} height={24} fill={color} />
           ),
         }}
