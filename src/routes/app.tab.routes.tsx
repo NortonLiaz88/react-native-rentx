@@ -43,11 +43,11 @@ export function TabRoutes() {
       // }}
     >
       <Screen
-        name="Home"
+        name="Start"
         component={StackRoutes}
         options={{
           tabBarIcon: ({ color }) => (
-            <HomeSvg width={24} height={24} fill={color} />
+            <HomeSvg width={36} height={36} fill={color} />
           ),
         }}
       />

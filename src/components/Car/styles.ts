@@ -1,10 +1,11 @@
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 import { RFValue } from "react-native-responsive-fontsize";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import styled from "styled-components/native";
 
 export const Container = styled(RectButton)<RectButtonProps>`
   width: 100%;
-  height: 126px;
+  height: ${hp(15.5)}px;
   background-color: ${({ theme }) => theme.colors.background_secondary};
 
   flex-direction: row;

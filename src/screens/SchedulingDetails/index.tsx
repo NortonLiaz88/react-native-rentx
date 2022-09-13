@@ -70,13 +70,13 @@ export function SchedulingDetails() {
 
   const { car, dates } = route.params! as Params;
 
-  const rentTotal = Number(dates.length * car.rent.price);
+  const rentTotal = Number(dates.length * car.price);
 
   async function handleConfirmRental() {
     setLoading(true);
 
     try {
-      const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
+      const schedulesByCar = await api.get(`/rentals/${car.id}`);
 
       const unavailable_dates = [
         ...schedulesByCar.data.unavailable_dates,
@@ -87,8 +87,8 @@ export function SchedulingDetails() {
         .post(`schedules_byuser`, {
           user_id: 1,
           car,
-          startDate: format(new Date(dates[0]), 'dd/MM/yyyy'),
-          endDate: format(new Date(dates[dates.length - 1]), 'dd/MM/yyyy'),
+          startDate: format(new Date(dates[0]), "dd/MM/yyyy"),
+          endDate: format(new Date(dates[dates.length - 1]), "dd/MM/yyyy"),
         })
         .catch(() => Alert.alert("Não foi possível confirmar o agendamento."));
 
@@ -131,8 +131,8 @@ export function SchedulingDetails() {
             <Name>{car.name}</Name>
           </Descriptions>
           <Rent>
-            <Period>{car.rent.period}</Period>
-            <Price>{car.rent.price}</Price>
+            <Period>{car.period}</Period>
+            <Price>{car.price}</Price>
           </Rent>
         </Details>
 
@@ -169,7 +169,7 @@ export function SchedulingDetails() {
         <RentalPrice>
           <RentalPriceLabel>Total</RentalPriceLabel>
           <RentalPriceDetails>
-            <RentalPriceQuota>{`R$ ${car.rent.price} x ${dates.length} diárias`}</RentalPriceQuota>
+            <RentalPriceQuota>{`R$ ${car.price} x ${dates.length} diárias`}</RentalPriceQuota>
             <RentalPriceTotal>R$ {rentTotal}</RentalPriceTotal>
           </RentalPriceDetails>
         </RentalPrice>

@@ -19,7 +19,7 @@ export function SchedulingComplete() {
   const navigation = useNavigation<any>();
 
   function handleConfirmRental() {
-    navigation.navigate('Home');
+    navigation.navigate('Start');
   }
 
   return (

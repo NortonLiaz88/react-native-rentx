@@ -8,6 +8,7 @@ import {
   StatusBar,
   Alert,
 } from "react-native";
+
 import { useTheme } from "styled-components";
 import { useAuth } from "../../hooks/auth";
 
@@ -20,7 +21,6 @@ import { Container, Footer, Header, Form, SubTitle, Title } from "./styles";
 export function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigation = useNavigation<any>();
   const { signIn } = useAuth();
 
