@@ -2,6 +2,7 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 import api from "../services/api";
 import { database } from "../database";
 import { User as ModelUser } from "../database/model/User";
+import { Alert } from "react-native";
 
 interface User {
   id: string;
@@ -89,8 +90,9 @@ function AuthProvider({ children }: AuthProviderProps) {
        });
 
        setData(user);
+
     } catch (error) {
-      
+      Alert.alert("Erro ao atualizar dados no banco");
     }
   }
 

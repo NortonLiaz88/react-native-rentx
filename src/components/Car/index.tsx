@@ -12,11 +12,10 @@ import {
   Type,
   CarImage,
 } from "./styles";
-import GasolineSvg from "../../assets/gasoline.svg";
-import { CarDTO } from "../../dtos/CarDTO";
 import { getAccessoryIcons } from "../../utils/getAccessoryIcons";
+import { Car as ModelCar } from "../../database/model/Car";
 interface Props extends RectButtonProps {
-  data: CarDTO;
+  data: ModelCar;
 }
 
 export function Car({ data, ...rest }: Props) {

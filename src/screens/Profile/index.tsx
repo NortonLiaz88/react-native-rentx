@@ -66,8 +66,27 @@ export function Profile() {
     if (result.cancelled) return;
     if (result.uri) {
       setAvatar(result.uri);
-      console.log("XAROPINHO");
     }
+  }
+
+  async function handleSignOut() {
+    Alert.alert(
+      "Tem certeza ?",
+      "Se você sair, irá precisar de internet para conectar-se novamente.",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => {},
+          style: "cancel",
+        },
+        {
+          text: "Sair",
+          onPress: () => signOut(),
+          style:"cancel",
+        },
+      ]
+    );
+
   }
 
   async function handleProfileUpdate() {
@@ -87,10 +106,10 @@ export function Profile() {
         driver_license: driverLicense,
         name,
         avatar,
-        token: user.token
+        token: user.token,
       });
 
-      Alert.alert('Perfil atualizado!');
+      Alert.alert("Perfil atualizado!");
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert("Opa", error.message);
@@ -107,7 +126,7 @@ export function Profile() {
             <HeaderTop>
               <BackButton color={theme.colors.shape} onPress={handleBack} />
               <HeaderTitle>Editar Perfil</HeaderTitle>
-              <LogoutButton onPress={signOut}>
+              <LogoutButton onPress={handleSignOut}>
                 <Feather name="power" color={theme.colors.shape} size={24} />
               </LogoutButton>
             </HeaderTop>
@@ -190,7 +209,11 @@ export function Profile() {
                 />
               </Section>
             )}
-            <Button title="Salvar alterações" onPress={handleProfileUpdate} />
+            <Button
+              enabled
+              title="Salvar alterações"
+              onPress={() => handleProfileUpdate()}
+            />
           </Content>
         </Container>
       </TouchableWithoutFeedback>
